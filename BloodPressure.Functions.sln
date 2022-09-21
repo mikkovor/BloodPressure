@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AEA4816A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloodPressure.IntegrationTests", "tests\BloodPressure.IntegrationTests\BloodPressure.IntegrationTests.csproj", "{8E8B86BC-B533-4BA8-875E-5B1467F629AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodPressure.UnitTests", "BloodPressure.UnitTests\BloodPressure.UnitTests.csproj", "{7FB3B1A1-51CB-45E6-8FBA-F633AEA6683B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{8E8B86BC-B533-4BA8-875E-5B1467F629AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E8B86BC-B533-4BA8-875E-5B1467F629AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E8B86BC-B533-4BA8-875E-5B1467F629AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB3B1A1-51CB-45E6-8FBA-F633AEA6683B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB3B1A1-51CB-45E6-8FBA-F633AEA6683B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB3B1A1-51CB-45E6-8FBA-F633AEA6683B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB3B1A1-51CB-45E6-8FBA-F633AEA6683B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{FF4B98B6-3D36-4B0E-A38E-BF6EE47C7D06} = {AF405B63-DFB4-4DAF-9492-107238DC879B}
 		{4497F832-413A-4B40-8D7D-1A4FB217C6BD} = {AF405B63-DFB4-4DAF-9492-107238DC879B}
 		{8E8B86BC-B533-4BA8-875E-5B1467F629AB} = {AEA4816A-DA4E-46D0-9061-2DC4123BDB75}
+		{7FB3B1A1-51CB-45E6-8FBA-F633AEA6683B} = {AEA4816A-DA4E-46D0-9061-2DC4123BDB75}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94F7FFDA-D259-41B2-98A8-93B87235B0AB}
