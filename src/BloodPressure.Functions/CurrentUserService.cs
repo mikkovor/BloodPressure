@@ -1,4 +1,5 @@
 ﻿using System;
+using BloodPressure.Application.Common.Constants;
 using BloodPressure.Application.Common.Interfaces;
 using BloodPressure.Domain.Models;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +10,6 @@ namespace BloodPressure.Functions
 {
     public class CurrentUserService : ICurrentUserService
     {
-        public const string LocalUserId = "LocalUserId";
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly ApplicationOptions _applicationOptions;
 
@@ -25,7 +25,7 @@ namespace BloodPressure.Functions
         {
             if (_applicationOptions.IsLocalEnvironment)
             {
-                return LocalUserId;
+                return LocalConstants.LocalUserId;
             }
 
             throw new ArgumentNullException(nameof(UserId), "Not found");
