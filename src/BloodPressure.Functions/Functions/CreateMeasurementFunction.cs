@@ -1,30 +1,28 @@
-using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using BloodPressure.Application.Common.Dtos;
+using BloodPressure.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Newtonsoft.Json;
 
 namespace BloodPressure.Functions.Functions;
 
 public class CreateMeasurementFunction
 {
-    [FunctionName("Function1")]
-    public async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)]
-        HttpRequest req)
+    private readonly IBloodPressureService _bloodPressureService;
+
+    public CreateMeasurementFunction(IBloodPressureService bloodPressureService)
     {
-        string name = req.Query["name"];
+        _bloodPressureService = bloodPressureService;
+    }
 
-        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-        dynamic data = JsonConvert.DeserializeObject(requestBody);
-        name = name ?? data?.name;
-
-        string responseMessage = string.IsNullOrEmpty(name)
-            ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-            : $"Hello, {name}. This HTTP triggered function executed successfully.";
-
-        return new OkObjectResult(responseMessage);
+    [FunctionName("CreateMeasurement")]
+    public async Task<ActionResult<MeasurementDto>> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]
+        CreateMeasurementDto createMeasurement, CancellationToken cancellationToken)
+    {
+        var result = await _bloodPressureService.CreateMeasurement(createMeasurement, cancellationToken);
+        return new OkObjectResult(result);
     }
 }

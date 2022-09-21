@@ -1,4 +1,5 @@
 ﻿using BloodPressure.Application.Common.Interfaces;
+using BloodPressure.Domain.Models;
 using BloodPressure.Infrastructure;
 using BloodPressure.Infrastructure.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -32,6 +33,10 @@ namespace BloodPressure.Functions
         public override void Configure(IFunctionsHostBuilder builder)
         {
             InitializeConfiguration(builder);
+
+            builder.Services.AddOptions<ApplicationOptions>()
+                .Configure<IConfiguration>((settings, _) =>
+                    Configuration?.GetSection(nameof(ApplicationOptions)).Bind(settings));
 
             builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
             builder.Services.AddScoped<IDateTime, DateTimeService>();
