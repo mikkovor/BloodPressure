@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BloodPressure.Application.Common.Dtos;
+﻿using BloodPressure.Application.Common.Dtos;
 using BloodPressure.Application.Common.Interfaces;
 
 namespace BloodPressure.Infrastructure.Services
