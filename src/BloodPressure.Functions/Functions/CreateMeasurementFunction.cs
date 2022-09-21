@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using BloodPressure.Application.Common.Dtos;
+using BloodPressure.Application.Common.Extensions;
 using BloodPressure.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
@@ -22,6 +23,11 @@ public class CreateMeasurementFunction
         [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]
         CreateMeasurementDto createMeasurement, CancellationToken cancellationToken)
     {
+        if (!createMeasurement.IsValid<CreateMeasurementDto, CreateMeasurementDtoValidator>(out var validationResults))
+        {
+            return new BadRequestObjectResult(validationResults);
+        }
+
         var result = await _bloodPressureService.CreateMeasurement(createMeasurement, cancellationToken);
         return new OkObjectResult(result);
     }
