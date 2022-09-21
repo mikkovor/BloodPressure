@@ -23,6 +23,7 @@ public class CreateMeasurementFunction
         [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]
         CreateMeasurementDto createMeasurement, CancellationToken cancellationToken)
     {
+        // TODO MOVE THIS TO SERVICE LEVEL
         if (!createMeasurement.IsValid<CreateMeasurementDto, CreateMeasurementDtoValidator>(out var validationResults))
         {
             return new BadRequestObjectResult(validationResults);
