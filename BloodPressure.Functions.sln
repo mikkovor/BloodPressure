@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloodPressure.Functions", "BloodPressure.Functions\BloodPressure.Functions.csproj", "{076C88DB-8246-4540-9C54-84B5E3D9A906}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{45209CC8-3E33-4224-8C22-8CF27C2255CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C6414A33-1287-44C8-BDBD-5944836C6FE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodPresurre.Domain", "BloodPresurre.Domain\BloodPresurre.Domain.csproj", "{8619BACD-3F73-4D4D-B07F-D5452585FD4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodPressure.Infrastructure", "BloodPressure.Infrastructure\BloodPressure.Infrastructure.csproj", "{CA631A7F-FD2E-4F49-9244-6FCE71F96357}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodPressure.Application", "BloodPressure.Application\BloodPressure.Application.csproj", "{0871FFA6-80F6-4012-BFB2-ACC867A276A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodPressure.IntegrationTests", "BloodPressure.IntegrationTests\BloodPressure.IntegrationTests.csproj", "{FC5B375A-7F2D-4597-B749-DB42DD11F6D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{076C88DB-8246-4540-9C54-84B5E3D9A906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{076C88DB-8246-4540-9C54-84B5E3D9A906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{076C88DB-8246-4540-9C54-84B5E3D9A906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{076C88DB-8246-4540-9C54-84B5E3D9A906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8619BACD-3F73-4D4D-B07F-D5452585FD4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8619BACD-3F73-4D4D-B07F-D5452585FD4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8619BACD-3F73-4D4D-B07F-D5452585FD4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8619BACD-3F73-4D4D-B07F-D5452585FD4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA631A7F-FD2E-4F49-9244-6FCE71F96357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA631A7F-FD2E-4F49-9244-6FCE71F96357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA631A7F-FD2E-4F49-9244-6FCE71F96357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA631A7F-FD2E-4F49-9244-6FCE71F96357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0871FFA6-80F6-4012-BFB2-ACC867A276A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0871FFA6-80F6-4012-BFB2-ACC867A276A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0871FFA6-80F6-4012-BFB2-ACC867A276A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0871FFA6-80F6-4012-BFB2-ACC867A276A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC5B375A-7F2D-4597-B749-DB42DD11F6D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC5B375A-7F2D-4597-B749-DB42DD11F6D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC5B375A-7F2D-4597-B749-DB42DD11F6D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC5B375A-7F2D-4597-B749-DB42DD11F6D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{076C88DB-8246-4540-9C54-84B5E3D9A906} = {45209CC8-3E33-4224-8C22-8CF27C2255CE}
+		{8619BACD-3F73-4D4D-B07F-D5452585FD4D} = {45209CC8-3E33-4224-8C22-8CF27C2255CE}
+		{CA631A7F-FD2E-4F49-9244-6FCE71F96357} = {45209CC8-3E33-4224-8C22-8CF27C2255CE}
+		{0871FFA6-80F6-4012-BFB2-ACC867A276A3} = {45209CC8-3E33-4224-8C22-8CF27C2255CE}
+		{FC5B375A-7F2D-4597-B749-DB42DD11F6D8} = {C6414A33-1287-44C8-BDBD-5944836C6FE4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94F7FFDA-D259-41B2-98A8-93B87235B0AB}
+	EndGlobalSection
+EndGlobal
