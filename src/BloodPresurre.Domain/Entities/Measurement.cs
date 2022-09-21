@@ -5,7 +5,7 @@ namespace BloodPressure.Domain.Entities;
 public class Measurement : BaseEntity
 {
     public Measurement(int id, int? pulse, int systolic, int diastolic, string userId, DateTime measuringDate,
-        DateTime created, DateTime modified)
+        DateTime created, DateTime lastModified)
     {
         Id = id;
         Pulse = pulse;
@@ -14,7 +14,7 @@ public class Measurement : BaseEntity
         UserId = userId;
         MeasuringDate = measuringDate;
         Created = created;
-        Modified = modified;
+        LastModified = lastModified;
     }
 
     public Measurement(int? pulse, int systolic, int diastolic, DateTime measuringDate, string userId)
