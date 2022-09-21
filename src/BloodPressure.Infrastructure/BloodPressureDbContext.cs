@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using BloodPressure.Application.Common;
+using BloodPressure.Application.Common.Interfaces;
 using BloodPressure.Domain.Entities;
 using BloodPressure.Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +16,7 @@ namespace BloodPressure.Infrastructure
             _dateTime = dateTime ?? throw new NullReferenceException(nameof(dateTime));
         }
 
-        public DbSet<Measurement> Measurement { get; set; }
+        public DbSet<Measurement> Measurement { get; set; } = null!;
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
         {

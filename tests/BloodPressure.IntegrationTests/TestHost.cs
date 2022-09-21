@@ -1,4 +1,4 @@
-﻿using BloodPressure.Application.Common;
+﻿using BloodPressure.Application.Common.Interfaces;
 using BloodPressure.Functions;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Azure.WebJobs.Host.Bindings;

@@ -1,4 +1,4 @@
-﻿using BloodPressure.Application.Common;
+﻿using BloodPressure.Application.Common.Interfaces;
 using BloodPressure.Infrastructure;
 using BloodPressure.Infrastructure.Services;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -12,7 +12,7 @@ namespace BloodPressure.Functions
 {
     public class Startup : FunctionsStartup
     {
-        public IConfiguration Configuration { get; private set; }
+        public IConfiguration? Configuration { get; private set; }
 
         private void InitializeConfiguration(IFunctionsHostBuilder builder)
         {
@@ -33,7 +33,9 @@ namespace BloodPressure.Functions
         {
             InitializeConfiguration(builder);
 
+            builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
             builder.Services.AddScoped<IDateTime, DateTimeService>();
+            builder.Services.AddScoped<IBloodPressureService, BloodPressureService>();
 
             builder.Services.AddScoped<IBloodPressureDbContext>(x =>
             {

@@ -1,7 +1,7 @@
 ﻿using BloodPressure.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BloodPressure.Application.Common;
+namespace BloodPressure.Application.Common.Interfaces;
 
 public interface IBloodPressureDbContext
 {

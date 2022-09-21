@@ -1,4 +1,4 @@
-﻿using BloodPressure.Application.Common;
+﻿using BloodPressure.Application.Common.Interfaces;
 
 namespace BloodPressure.Infrastructure.Services
 {
