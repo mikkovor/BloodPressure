@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BloodPressure.Infrastructure
 {
-    internal class BloodPressureDbContext : DbContext, IBloodPressureDbContext
+    public class BloodPressureDbContext : DbContext, IBloodPressureDbContext
     {
         private readonly IDateTime _dateTime;
 
