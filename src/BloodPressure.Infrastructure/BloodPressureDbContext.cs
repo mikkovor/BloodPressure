@@ -25,10 +25,10 @@ namespace BloodPressure.Infrastructure
                 switch (entry.State)
                 {
                     case EntityState.Added:
-                        entry.Entity.Created = _dateTime.UtcNow;
+                        entry.Entity.Created = _dateTime.Now;
                         break;
                     case EntityState.Modified:
-                        entry.Entity.LastModified = _dateTime.UtcNow;
+                        entry.Entity.LastModified = _dateTime.Now;
                         break;
                 }
             }

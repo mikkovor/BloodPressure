@@ -4,6 +4,6 @@ namespace BloodPressure.Infrastructure.Services
 {
     public class DateTimeService : IDateTime
     {
-        public DateTime UtcNow => DateTime.UtcNow;
+        public DateTime Now => DateTime.Now;
     }
 }
