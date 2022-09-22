@@ -1,4 +1,3 @@
-using BloodPressure.Application.Common.Constants;
 using BloodPressure.Application.Common.Dtos;
 using BloodPressure.Application.Common.Interfaces;
 using BloodPressure.Functions.Functions;
@@ -33,6 +32,5 @@ public class CreateMeasurementTests
         newMeasurement?.Systolic.Should().Be(createMeasurement.Systolic);
         newMeasurement?.Diastolic.Should().Be(createMeasurement.Diastolic);
         newMeasurement?.MeasuringDate.Should().Be(dateTime);
-        newMeasurement?.UserId.Should().Be(LocalConstants.LocalUserId);
     }
 }

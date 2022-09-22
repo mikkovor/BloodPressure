@@ -1,26 +1,47 @@
+using System.Threading;
+using System.Threading.Tasks;
+using BloodPressure.Application.Common.Dtos;
+using BloodPressure.Application.Common.Extensions;
 using BloodPressure.Application.Common.Interfaces;
+using BloodPressure.Functions;
+using FluentValidation;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+
+[assembly: FunctionsStartup(typeof(Startup))]
 
 namespace BloodPressure.Functions.Functions
 {
     public class GetMeasurementsFunction
     {
         private readonly IBloodPressureService _bloodPressureService;
+        private readonly ILogger _logger;
 
-        public GetMeasurementsFunction(IBloodPressureService bloodPressureService)
+        public GetMeasurementsFunction(IBloodPressureService bloodPressureService,
+            ILogger<GetMeasurementsFunction> logger)
         {
             _bloodPressureService = bloodPressureService;
+            _logger = logger;
         }
 
         [FunctionName("GetMeasurementsFunction")]
-        [return: Queue("measurements-email")]
-        public void Run(
+        [return: ServiceBus("measurements-email", Connection = "BloodPressureConnection")]
+        public async Task<MeasurementsEmailDto> Run(
             [ServiceBusTrigger("get-measurements", Connection = "BloodPressureConnection")]
-            string myQueueItem,
-            ILogger log)
+            GetMeasurementsDto getMeasurements, CancellationToken cancellationToken)
         {
-            log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+            if (!getMeasurements.IsValid<GetMeasurementsDto, GetMeasurementsDtoValidator>(out var validationResult))
+            {
+                _logger.LogError("Request {0} was not valid. Found errors: {1}", getMeasurements, validationResult);
+                throw new ValidationException(validationResult.Errors);
+            }
+
+            var measurements = await _bloodPressureService.GetMeasurements(getMeasurements, cancellationToken);
+
+            return new MeasurementsEmailDto(getMeasurements.UserId, getMeasurements.From,
+                getMeasurements.To,
+                measurements);
         }
     }
 }

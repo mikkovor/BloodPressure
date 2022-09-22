@@ -2,12 +2,16 @@
 using BloodPressure.Domain.Models;
 using BloodPressure.Infrastructure;
 using BloodPressure.Infrastructure.Services;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Azure.WebJobs.Host.Bindings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Serilog;
+using Serilog.Events;
+using Serilog.Exceptions;
 
 namespace BloodPressure.Functions
 {
@@ -50,6 +54,24 @@ namespace BloodPressure.Functions
                 opt.UseSqlServer(connectionString);
                 return new BloodPressureDbContext(opt.Options, dateTime);
             });
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                .MinimumLevel.Override("System", LogEventLevel.Warning)
+                .MinimumLevel.Override("Worker", LogEventLevel.Warning)
+                .MinimumLevel.Override("Host", LogEventLevel.Warning)
+                .MinimumLevel.Override("Function", LogEventLevel.Warning)
+                .MinimumLevel.Override("Azure", LogEventLevel.Warning)
+                .MinimumLevel.Override("DurableTask", LogEventLevel.Warning)
+                .Enrich.FromLogContext()
+                .Enrich.WithExceptionDetails()
+                .WriteTo.ApplicationInsights(
+                    TelemetryConfiguration.CreateDefault(),
+                    TelemetryConverter.Events,
+                    LogEventLevel.Information)
+                .CreateLogger();
+            builder.Services.AddLogging(configure => configure.AddSerilog(Log.Logger));
         }
     }
 }
